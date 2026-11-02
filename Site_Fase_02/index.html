@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JozaTech Soluções - Fase 02: Interatividade & Manipulação do DOM</title>
+    <meta name="description" content="Aplicação web interativa desenvolvida para a Avaliação da Fase 2 de Desenvolvimento Front-end. Foco em manipulação do DOM, eventos, validação de dados e personalização de estilos com JavaScript.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Folha de Estilos Modular -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ======================================================================
+         1. Barra de Acessibilidade & Customização Visual (Manipulada por JS)
+         ====================================================================== -->
+    <aside class="accessibility-bar" aria-label="Controles de Acessibilidade e Estilo">
+        <div class="accessibility-container">
+            <div class="accessibility-notice">
+                <span class="badge-phase">Fase 02</span>
+                <span>Interatividade com JavaScript & DOM</span>
+            </div>
+
+            <div class="controls-group">
+                <!-- Seletor de Paleta de Cores Dinâmica -->
+                <div class="control-item">
+                    <span>Cor:</span>
+                    <div class="color-dots" title="Selecione uma cor de destaque">
+                        <button class="dot-color" data-color="#10b981" aria-label="Cor Verde Esmeralda" title="Verde Esmeralda"></button>
+                        <button class="dot-color" data-color="#0284c7" aria-label="Cor Azul Oceano" title="Azul Oceano"></button>
+                        <button class="dot-color" data-color="#8b5cf6" aria-label="Cor Roxo Tech" title="Roxo Tech"></button>
+                        <button class="dot-color" data-color="#ea580c" aria-label="Cor Laranja Energia" title="Laranja Energia"></button>
+                    </div>
+                </div>
+
+                <!-- Controle de Tamanho de Fonte -->
+                <div class="control-item" role="group" aria-label="Ajuste do tamanho de texto">
+                    <span>Texto:</span>
+                    <button id="font-decrease" class="btn-ctrl" aria-label="Diminuir fonte">A-</button>
+                    <button id="font-reset" class="btn-ctrl active" aria-label="Fonte padrão">A</button>
+                    <button id="font-increase" class="btn-ctrl" aria-label="Aumentar fonte">A+</button>
+                </div>
+
+                <!-- Alternador de Tema Escuro / Claro -->
+                <div class="control-item">
+                    <button id="theme-toggle" class="btn-ctrl" aria-label="Alternar para Modo Escuro">
+                        <span id="theme-icon">🌙</span>
+                        <span id="theme-text">Modo Escuro</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ======================================================================
+         2. Cabeçalho & Navegação Principal
+         ====================================================================== -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                Joza<span>Tech</span>
+            </a>
+
+            <button id="mobile-toggle" class="btn-mobile-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+                ☰
+            </button>
+
+            <nav aria-label="Navegação do Site">
+                <ul id="nav-menu" class="nav-menu">
+                    <li><a href="#inicio" class="active">Início</a></li>
+                    <li><a href="#pilares">Pilares JS</a></li>
+                    <li><a href="#catalogo">Catálogo Dinâmico</a></li>
+                    <li><a href="#simulador">Simulador ESG</a></li>
+                    <li><a href="#contato">Validação & Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         3. Seção Hero com Gatilhos de Ação
+         ====================================================================== -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-pill">
+                <span class="status-indicator"></span>
+                <span>Aplicação Web Dinâmica • Manipulação do DOM</span>
+            </div>
+            <h1>Engenharia Front-end <span>Interativa & Sustentável</span></h1>
+            <p>
+                Evolução para a Fase 02: transformando páginas estáticas em interfaces vivas, responsivas e orientadas a eventos em JavaScript puro (Vanilla JS).
+            </p>
+            <div class="hero-actions">
+                <a href="#catalogo" class="btn btn-primary">
+                    <span>Explorar Catálogo Interativo</span>
+                    <span>↓</span>
+                </a>
+                <a href="#simulador" class="btn btn-secondary">
+                    <span>Testar Simulador</span>
+                    <span>⚡</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         4. Conteúdo Principal da Aplicação
+         ====================================================================== -->
+    <main>
+
+        <!-- 4.1 Pilares da Fase 02 (DOM, Eventos, Estilos e Validação) -->
+        <section id="pilares" aria-labelledby="titulo-pilares">
+            <div class="section-header">
+                <span class="section-tag">Critérios Avaliativos</span>
+                <h2 id="titulo-pilares" class="section-title">Pilares do Desenvolvimento Interativo</h2>
+                <p class="section-subtitle">
+                    Demonstração prática dos conceitos essenciais exigidos nas orientações da Fase 2.
+                </p>
+            </div>
+
+            <div class="dom-features-grid">
+                <div class="feature-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Seleção e Manipulação do DOM</h3>
+                    <p>Captura dinâmica de elementos HTML via seletores modernos e injeção de novos nós, textos e atributos sem recarregar a página.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Interatividade com Eventos</h3>
+                    <p>Escuta e resposta em tempo real a múltiplos tipos de ações do usuário: <code>click</code>, <code>input</code>, <code>change</code>, <code>submit</code> e <code>keydown</code>.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Manipulação Dinâmica de Estilos</h3>
+                    <p>Modificação visual ativa através de variáveis CSS no <code>:root</code>, alternância de Dark Mode e redimensionamento de fontes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Validação Robusta de Formulários</h3>
+                    <p>Verificação criteriosa de dados antes do envio com expressões regulares, bloqueio de submissão e feedback visual instantâneo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4.2 Catálogo Dinâmico com Filtros, Busca e Geração de Elementos no DOM -->
+        <section id="catalogo" class="catalog-section" aria-labelledby="titulo-catalogo">
+            <div class="section-header">
+                <span class="section-tag">Manipulação do DOM em Tempo Real</span>
+                <h2 id="titulo-catalogo" class="section-title">Catálogo de Soluções Sustentáveis</h2>
+                <p class="section-subtitle">
+                    Os itens abaixo são gerados dinamicamente via JavaScript a partir de uma estrutura de dados JSON. Utilize a busca e os filtros por categoria.
+                </p>
+            </div>
+
+            <!-- Barra de Ferramentas: Busca e Filtros -->
+            <div class="catalog-toolbar">
+                <div class="search-box-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input 
+                        type="search" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="Pesquisar por título, palavra-chave ou impacto (ex: Nuvem, Código, OLED)..."
+                        aria-label="Pesquisar soluções sustentáveis"
+                    >
+                </div>
+
+                <div class="filter-pills" role="group" aria-label="Filtrar por categoria">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="cloud">Cloud Verde</button>
+                    <button class="filter-btn" data-filter="codigo">Código Limpo</button>
+                    <button class="filter-btn" data-filter="design">UX & Acessibilidade</button>
+                </div>
+            </div>
+
+            <div class="catalog-status">
+                <span id="catalog-count">Carregando catálogo...</span>
+                <span>💡 Clique em <strong>Ver Detalhes</strong> para acionar o modal dinâmico.</span>
+            </div>
+
+            <!-- Grade onde o JavaScript injeta os cards -->
+            <div id="catalog-grid" class="catalog-grid" aria-live="polite">
+                <!-- Conteúdo renderizado pelo arquivo js/script.js -->
+            </div>
+        </section>
+
+        <!-- 4.3 Simulador Interativo: Cálculos, Eventos Input e Mudança de Estilos -->
+        <section id="simulador" class="simulator-section" aria-labelledby="titulo-simulador">
+            <div class="section-header">
+                <span class="section-tag">Cálculo & Manipulação de Estilo</span>
+                <h2 id="titulo-simulador" class="section-title">Simulador de Impacto ESG</h2>
+                <p class="section-subtitle">
+                    Arraste o controle ou altere a estratégia para observar a atualização instantânea dos valores e da barra visual de progresso.
+                </p>
+            </div>
+
+            <div class="simulator-layout">
+                <!-- Controles do Simulador -->
+                <div class="sim-controls">
+                    <div class="control-block">
+                        <div class="control-label-wrapper">
+                            <label for="range-servers">Servidores em Operação:</label>
+                            <span id="range-value" class="range-value-badge">30 servidores</span>
+                        </div>
+                        <input 
+                            type="range" 
+                            id="range-servers" 
+                            class="sim-range" 
+                            min="1" 
+                            max="150" 
+                            value="30"
+                            aria-label="Selecione a quantidade de servidores"
+                        >
+                    </div>
+
+                    <div class="control-block">
+                        <label for="select-strategy">Estratégia de Otimização Sustentável:</label>
+                        <select id="select-strategy" class="sim-select" aria-label="Estratégia de Otimização">
+                            <option value="0.30">Refatoração de Front-End & Compressão (-30% emissões)</option>
+                            <option value="0.50" selected>Green Cloud & Desligamento Inteligente (-50% emissões)</option>
+                            <option value="0.70">Arquitetura Serverless 100% Renovável (-70% emissões)</option>
+                        </select>
+                    </div>
+
+                    <p style="font-size: 0.875rem; color: var(--text-light);">
+                        <em>*Cálculos pedagógicos com base em benchmarks da Green Software Foundation (450kg CO2/ano por servidor padrão).</em>
+                    </p>
+                </div>
+
+                <!-- Resultados e Barra de Progresso Manipulada no DOM -->
+                <div class="sim-results">
+                    <h4>Resultados Estimados de Redução</h4>
+                    
+                    <div class="result-metric-grid">
+                        <div class="metric-box">
+                            <div id="metric-co2" class="metric-number">0 kg</div>
+                            <div class="metric-label">CO2 Evitado ao Ano</div>
+                        </div>
+
+                        <div class="metric-box">
+                            <div id="metric-trees" class="metric-number">0</div>
+                            <div class="metric-label">Árvores Equivalentes</div>
+                        </div>
+                    </div>
+
+                    <div class="metric-box" style="text-align: left;">
+                        <span style="font-size: 0.85rem; color: var(--text-light);">Economia Financeira Projetada:</span>
+                        <div id="metric-economy" style="font-size: 1.4rem; font-weight: 700; color: var(--secondary-color);">R$ 0</div>
+                    </div>
+
+                    <!-- Barra de Progresso Dinâmica -->
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Eficiência da Otimização:</span>
+                            <span id="progress-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-bg" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div id="progress-fill" class="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4.4 Dica Sustentável do Dia (Manipulação Assíncrona de Conteúdo) -->
+        <section aria-labelledby="titulo-insight">
+            <h2 id="titulo-insight" class="visually-hidden" style="display:none;">Dica de TI Verde</h2>
+            <div class="insight-box">
+                <div class="insight-text-area">
+                    <div class="insight-label">🌱 Dica Sustentável do Dia</div>
+                    <blockquote id="insight-quote" class="insight-quote">
+                        “Transferir 1 GB de dados pela internet gera, em média, entre 20g e 50g de CO2. Otimizar imagens e scripts salva o planeta.”
+                    </blockquote>
+                    <p id="insight-author" class="insight-author">— Fonte: Green Software Foundation</p>
+                </div>
+                <button id="btn-new-insight" class="btn btn-outline" type="button">
+                    💡 Obter Outro Insight
+                </button>
+            </div>
+        </section>
+
+        <!-- 4.5 Formulário de Contato com Validação Completa em JavaScript -->
+        <section id="contato" class="contact-section" aria-labelledby="titulo-contato">
+            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <span class="section-tag">Validação Avançada de Dados</span>
+                <h2 id="titulo-contato" class="section-title">Solicite uma Consultoria Sustentável</h2>
+                <p class="section-subtitle">
+                    O formulário abaixo intercepta o evento <code>submit</code>, valida todos os campos em tempo real com expressões regulares e exibe mensagens dinâmicas de erro ou sucesso.
+                </p>
+            </div>
+
+            <form id="contact-form" novalidate>
+                <!-- Campo Nome -->
+                <div class="form-group">
+                    <label for="nome">Nome Completo <span class="required-mark">*</span></label>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        name="nome" 
+                        class="form-control" 
+                        placeholder="Ex: Josias Soares" 
+                        required
+                    >
+                    <span id="error-nome" class="error-message"></span>
+                </div>
+
+                <!-- Campo E-mail -->
+                <div class="form-group">
+                    <label for="email">E-mail Corporativo ou Pessoal <span class="required-mark">*</span></label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-control" 
+                        placeholder="seu@dominio.com" 
+                        required
+                    >
+                    <span id="error-email" class="error-message"></span>
+                </div>
+
+                <!-- Campo Assunto -->
+                <div class="form-group">
+                    <label for="assunto">Área de Interesse <span class="required-mark">*</span></label>
+                    <select id="assunto" name="assunto" class="form-control" required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="cloud">Migração para Cloud Verde</option>
+                        <option value="coding">Auditoria de Green Coding & Front-end</option>
+                        <option value="acessibilidade">Acessibilidade Digital (WCAG 2.1)</option>
+                        <option value="outro">Outras Consultorias Sustentáveis</option>
+                    </select>
+                    <span id="error-assunto" class="error-message"></span>
+                </div>
+
+                <!-- Campo Mensagem com Contador de Caracteres -->
+                <div class="form-group">
+                    <label for="mensagem">Mensagem ou Descrição do Desafio <span class="required-mark">*</span></label>
+                    <textarea 
+                        id="mensagem" 
+                        name="mensagem" 
+                        rows="4" 
+                        maxlength="300" 
+                        class="form-control" 
+                        placeholder="Descreva seu projeto ou dúvida (mínimo de 15 caracteres)..." 
+                        required
+                    ></textarea>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span id="error-mensagem" class="error-message"></span>
+                        <span id="char-counter" class="char-counter">0 / 300 caracteres</span>
+                    </div>
+                </div>
+
+                <!-- Termos e Condições -->
+                <div class="form-group">
+                    <label class="checkbox-label" for="termos">
+                        <input type="checkbox" id="termos" name="termos" required>
+                        <span>Concordo com o tratamento responsável dos meus dados segundo as diretrizes de privacidade. <span class="required-mark">*</span></span>
+                    </label>
+                    <span id="error-termos" class="error-message"></span>
+                </div>
+
+                <!-- Botão de Envio com Efeito Dinâmico -->
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span>Enviar Mensagem</span>
+                    <span>✉️</span>
+                </button>
+            </form>
+
+            <!-- Histórico Dinâmico de Envios Recentes adicionados via DOM -->
+            <div class="recent-submissions">
+                <h4>Atendimentos Registrados Recentemente (DOM Dinâmico):</h4>
+                <div id="submissions-list" class="submissions-list">
+                    <div class="submission-item">
+                        <div>
+                            <strong>Josias Soares</strong> 
+                            <span style="color: var(--text-light); font-size: 0.8rem;">(jozacolab@gmail.com)</span>
+                            <p style="margin-top: 0.2rem; color: var(--text-main);">Demonstração da entrega da Fase 2 de Front-End iniciada com sucesso!</p>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-light); white-space: nowrap;">Registro Inicial</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================
+         5. Janela Modal de Detalhes (Manipulada dinamicamente via JS)
+         ====================================================================== -->
+    <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-container">
+            <button id="btn-close-modal" class="btn-close-modal" aria-label="Fechar janela modal">&times;</button>
+            <div class="modal-content">
+                <span id="modal-category" class="solution-tag" style="margin-bottom: 0.75rem; display: inline-block;">Categoria</span>
+                <h3 id="modal-title">Título da Solução</h3>
+                <p id="modal-description">Descrição aprofundada da solução selecionada.</p>
+                <div class="modal-highlight">
+                    <strong id="modal-impact">Impacto:</strong>
+                </div>
+                <button class="btn btn-primary" onclick="document.getElementById('modal-overlay').classList.remove('open');" style="width: 100%;">
+                    Entendido, Voltar à Página
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contêiner de Notificações Flutuantes (Toast) -->
+    <div id="toast-container" class="toast-container" aria-live="assertive"></div>
+
+    <!-- ======================================================================
+         6. Rodapé
+         ====================================================================== -->
+    <footer>
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#pilares">Critérios Fase 2</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#simulador">Simulador ESG</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <p>&copy; 2026 JozaTech Soluções Sustentáveis - Desenvolvido para a Atividade Avaliativa da Fase 2 de Desenvolvimento Front-end.</p>
+            <p style="font-size: 0.8rem; color: #64748b;">
+                Tecnologias: HTML5 Semântico, CSS3 Modular (Flexbox, Grid, CSS Custom Properties) e JavaScript ES6+ (DOM & Eventos).
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript com defer para garantir o carregamento do DOM -->
+    <script src="js/script.js" defer></script>
+</body>
+</html>
+
